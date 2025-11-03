@@ -91,13 +91,14 @@ study_manager/
 2️⃣ 프로젝트 실행
 
 bash
-
 python main.py
+
 3️⃣ (선택) 시각화 그래프 실행
 
 bash
-
 python visualizer.py
+
+
 🎯 개발 목적과 의미
 📈 자기 데이터 기반 자기관리 프로젝트
 단순 기록이 아니라 데이터를 “활용”하는 첫 단계
@@ -122,3 +123,4 @@ v4.0	Personal AI Manager	일정 관리, 자동화, 음성 인터페이스(JARVIS
 GitHub	github.com/sungwoo63
 이메일	sungwoo63@gmail.com
 프로젝트 버전	1.0.0
+
