@@ -104,34 +104,39 @@ python visualizer.py
 
 ## 🎯 개발 목적과 의미
 
-#📈 자기 데이터 기반 자기관리 프로젝트
+📈 자기 데이터 기반 자기관리 프로젝트
 단순 기록이 아니라 데이터를 “활용”하는 첫 단계
 
-#🤖 AI 피드백 시스템의 초석
+🤖 AI 피드백 시스템의 초석
 향후 LLM(OpenAI API / HuggingFace 모델) 기반으로 확장 예정
 
-#🔍 데이터와 감정 패턴 통합
+🔍 데이터와 감정 패턴 통합
 “나를 분석하는 AI”로 발전시키는 기반
 
-#🌱 지속 가능한 성장 기록
+🌱 지속 가능한 성장 기록
 Smart Study → Smart Life Planner → J.A.R.V.I.S 로 이어질 장기 성장형 프로젝트
 
 ---
 
 ## 🧭 향후 개선 계획 (Next Step)
+
 | 단계 |	목표 |	설명 |
-| v2.0 |	Smart Life Planner |	수면·감정 데이터 확장, GUI / 웹 대시보드 추가 |
-| v3.0 |	AI Feedback	OpenAI | API 기반 개인화된 피드백 생성 |
-| v4.0 |	Personal AI Manager |	일정 관리, 자동화, 음성 인터페이스(JARVIS 방향) |
+|------|------|------|
+| **v2.0** |	Smart Life Planner |	수면·감정 데이터 확장, GUI / 웹 대시보드 추가 |
+| **v3.0** |	AI Feedback	OpenAI | API 기반 개인화된 피드백 생성 |
+| **v4.0** |	Personal AI Manager |	일정 관리, 자동화, 음성 인터페이스(JARVIS 방향) |
 
 ---
 
 ## 👨‍💻 개발자 정보
+
 | 구분	| 내용 |
+|------|------|
 | 이름	| Sungwoo |
 | GitHub	| github.com/sungwoo63 |
 | 이메일	| sungwoo63@gmail.com |
 | 프로젝트 버전	| 1.0.0 |
+
 
 
 
