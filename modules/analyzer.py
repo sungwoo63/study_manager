@@ -1,24 +1,30 @@
 import pandas as pd
-from modules.record_handler import load_data
+from modules.record_handler import get_all
 
 def analyze_data():
-    """저장된 학습 데이터를 pandas로 분석"""
-    data = load_data()
-
+    data = get_all()
     if not data:
-        print("⚠️ 아직 기록된 데이터가 없습니다.")
         return None
 
-    df = pd.DataFrame(data).T
-    df["hours"] = df["hours"].astype(float)
-    df["focus"] = df["focus"].astype(int)
+    records = []
+    for date, info in data.items():
+        if info.get("final_report"):
+            r = info["final_report"]
+            records.append({
+                "date": date,
+                "goal": info["goal_hours"],
+                "actual": r["actual_hours"],
+                "focus": r["focus"],
+                "mood": r["mood"]
+            })
 
-    result = {
-        "total_days": len(df),
-        "avg_focus": round(df["focus"].mean(), 2),
-        "avg_hours": round(df["hours"].mean(), 2),
-        "max_focus_day": df["focus"].idxmax(),
-        "min_focus_day": df["focus"].idxmin()
+    if not records:
+        return None
+
+    df = pd.DataFrame(records)
+    res = {
+        "days": len(df),
+        "avg_hours": round(df["actual"].mean(), 2),
+        "avg_focus": round(df["focus"].mean(), 2)
     }
-
-    return result
+    return res

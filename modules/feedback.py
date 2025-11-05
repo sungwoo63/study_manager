@@ -1,23 +1,36 @@
-def generate_feedback(analysis):
-    """평균 집중도에 따른 피드백 메시지 반환"""
-    if not analysis:
-        return "⚠️ 피드백을 생성할 데이터가 없습니다."
+def feedback_today(today):
+    if not today:
+        return "⚠️ 오늘 기록이 없습니다."
 
-    avg_focus = analysis["avg_focus"]
-    avg_hours = analysis["avg_hours"]
+    goal = today.get("goal_hours", 0)
+    progress = today.get("progress_hours", 0)
+    rate = round((progress / goal) * 100, 1) if goal else 0
 
-    if avg_focus < 5:
-        msg = "요즘 집중력이 다소 떨어지고 있어요. 푹 쉬는 날을 가져보세요."
-    elif 5 <= avg_focus < 7:
-        msg = "꾸준히 학습 중이에요! 루틴을 조금씩 다듬어도 좋습니다."
-    else:
-        msg = "정말 멋져요! 현재 패턴을 유지하면서 스스로에게 보상하세요!"
+    msg = f"🎯 목표 {goal}h / 누적 {progress}h ({rate}%)\n"
 
-    result = f"""
-📊 [학습 분석 결과]
-- 총 학습일수: {analysis['total_days']}
-- 평균 공부시간: {avg_hours}시간
-- 평균 집중도: {avg_focus}
-💬 AI 피드백: {msg}
-"""
-    return result
+    plans = today.get("plan_list", [])
+    done = len([t for t in plans if t["done"]])
+    msg += f"☑️ 완료한 과제: {done}/{len(plans)}개\n"
+
+    if today.get("final_report"):
+        r = today["final_report"]
+        msg += f"🙂 기분: {r['mood']} | 🎯 집중도: {r['focus']}\n"
+
+        rate_final = round((r["actual_hours"]/goal)*100, 1) if goal else 0
+        if r["focus"] >= 8:
+            comment_line = "🔥 오늘 정말 집중이 잘 됐어요!"
+        elif r["focus"] >= 6:
+            comment_line = "💡 꾸준히 집중력을 유지했어요."
+        else:
+            comment_line = "😴 약간 산만했지만 내일 더 나아질 거예요!"
+
+        msg += f"📊 최종 달성률 {rate_final}% | {comment_line}\n"
+
+        if today.get("completed_tasks"):
+            tasks = ", ".join(today["completed_tasks"])
+            msg += f"🏁 마무리한 과제: {tasks}\n"
+
+        if today.get("comment"):
+            msg += f"📝 한줄 코멘트: {today['comment']}\n"
+
+    return msg
