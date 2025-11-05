@@ -7,6 +7,8 @@ from modules.visualizer import show_daily_summary, show_focus_trend
 import io
 import matplotlib.pyplot as plt
 from modules.report import weekly_report, make_feedback
+import sys, os
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 st.set_page_config(page_title="Smart Study Planner", layout="centered")
 
@@ -142,7 +144,7 @@ elif menu == "누적 분석 보기":
             st.warning("⚠️ 집중도 데이터가 없습니다.")
 
     st.divider()
-    
+
 elif menu == "📅 주간 리포트 보기":
     st.header("📅 주간 학습 리포트")
 
