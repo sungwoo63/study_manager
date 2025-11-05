@@ -1,4 +1,6 @@
 import streamlit as st
+import sys, os
+import pathlib
 from modules.record_handler import (
     set_goal, add_progress, check_task, finish_day, get_today, get_all
 )
@@ -7,7 +9,8 @@ from modules.visualizer import show_daily_summary, show_focus_trend
 import io
 import matplotlib.pyplot as plt
 from modules.report import weekly_report, make_feedback
-import sys, os
+
+sys.path.append(pathlib.Path(__file__).parent.absolute())
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 st.set_page_config(page_title="Smart Study Planner", layout="centered")
